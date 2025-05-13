@@ -7,9 +7,9 @@ const BASE_URL = 'https://quickbooks.api.intuit.com';
 const tokenURL = 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer';
 const authURL = 'https://appcenter.intuit.com/connect/oauth2';
 
-const generateState = () => crypto.randomBytes(16).toString('hex');
 
 export const getAuthUrl = (req) => {
+    const generateState = () => crypto.randomBytes(16).toString('hex');
     const state = generateState(); // Generate a random state
     req.session.oauthState = state; 
 

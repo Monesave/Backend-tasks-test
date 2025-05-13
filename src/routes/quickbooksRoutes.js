@@ -5,12 +5,12 @@ const router = express.Router();
 
 // STEP 1: Redirect user to QuickBooks auth page
 router.get('/connect', (req, res) => {
-  const authUrl = getAuthUrl();
+  const authUrl = getAuthUrl(req);
   res.redirect(authUrl);
 });
 
 // STEP 2: OAuth2 callback
-router.get('/callback/quickbooks', async (req, res) => {
+router.get('/callback', async (req, res) => {
     const { state, code } = req.query;
   
     // Validate the state parameter
